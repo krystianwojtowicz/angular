@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body ng-app="aplikacja">
+  <div class="containter" ng-controller="kontrolerTabeliStrongmanow">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="text-center">Klasyfikacja strongmanów</h1>
+        <div class="input-grup">
+          <span class="input-group-addon">Szukaj: </span>
+          <input type="text" class="form-control" placeholder="Czego szukasz?" ng-model="wyszukiwarka">
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th ng-repeat="naglowek in ['Rok' , 'MistrzSwiata' , 'Wiecemistrz' , 'TrzecieMiejsce' ]">{{naglowek}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat='Strongman in strongmani | filter : wyszukiwarka'>
+                <td>{{Strongman.Rok}}</td>
+                <td>{{Strongman.MistrzSwiata}}</td>
+                <td>{{Strongman.Wicemistrz}}</td>
+                <td>{{Strongman.TrzecieMiejsce}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    const app = angular.module('aplikacja', []);
+
+    app.controller('kontrolerTabeliStrongmanow', ['$scope', '$filter', function ($scope, $filter) {
+      $scope.strongmani = [
+        {
+          "Rok": 1977,
+          "MistrzSwiata": "Bruce Wilhelm",
+          "Wicemistrz": "Bob Young",
+          "TrzecieMiejsce": "Ken Patera"
+        },
+        {
+          "Rok": 1978,
+          "MistrzSwiata": "Bruce Wilhelm",
+          "Wicemistrz": "Don Reinhoudt",
+          "TrzecieMiejsce": "Lars Hedlund"
+        },
+        {
+          "Rok": 1979,
+          "MistrzSwiata": "Don Reinhoudt",
+          "Wicemistrz": "Lars Hedlund",
+          "TrzecieMiejsce": "Bill Kazmaier"
+        },
+        {
+          "Rok": 1980,
+          "MistrzSwiata": "Bill Kazmaier",
+          "Wicemistrz": "Lars Hedlund",
+          "TrzecieMiejsce": "Geoff Capes"
+        },
+        {
+          "Rok": 1981,
+          "MistrzSwiata": "Bill Kazmaier",
+          "Wicemistrz": "Geoff Capes",
+          "TrzecieMiejsce": "Dave Waddington"
+        },
+        {
+          "Rok": 1982,
+          "MistrzSwiata": "Bill Kazmaier",
+          "Wicemistrz": "Tom Magee",
+          "TrzecieMiejsce": "John Gamble"
+        },
+        {
+          "Rok": 1983,
+          "MistrzSwiata": "Geoff Capes",
+          "Wicemistrz": "Jón Páll Sigmarsson",
+          "TrzecieMiejsce": "Simon Wulfse"
+        },
+        {
+          "Rok": 1984,
+          "MistrzSwiata": "Jón Páll Sigmarsson",
+          "Wicemistrz": "Ab Wolders",
+          "TrzecieMiejsce": "Geoff Capes"
+        },
+        {
+          "Rok": 1985,
+          "MistrzSwiata": "Geoff Capes",
+          "Wicemistrz": "Jón Páll Sigmarsson",
+          "TrzecieMiejsce": "Cees de Vreugd"
+        },
+        {
+          "Rok": 1986,
+          "MistrzSwiata": "Jón Páll Sigmarsson",
+          "Wicemistrz": "Geoff Capes",
+          "TrzecieMiejsce": "Ab Wolders"
+        },
+        {
+          "Rok": 1987,
+          "MistrzSwiata": "NIE ROZGRYWANO",
+          "Wicemistrz": "",
+          "TrzecieMiejsce": ""
+        },
+        {
+          "Rok": 1988,
+          "MistrzSwiata": "Jón Páll Sigmarsson",
+          "Wicemistrz": "Bill Kazmaier",
+          "TrzecieMiejsce": "Jamie Reeves"
+        },
+        {
+          "Rok": 1989,
+          "MistrzSwiata": "Jamie Reeves",
+          "Wicemistrz": "Ab Wolders",
+          "TrzecieMiejsce": "Jón Páll Sigmarsson"
+        },
+        {
+          "Rok": 1990,
+          "MistrzSwiata": "Jón Páll Sigmarsson",
+          "Wicemistrz": "O.D. Wilson",
+          "TrzecieMiejsce": "Ilkka Nummisto"
+        },
+        {
+          "Rok": 1991,
+          "MistrzSwiata": "Magnús Ver Magnússon",
+          "Wicemistrz": "Henning Thorsen",
+          "TrzecieMiejsce": "Gary Taylor"
+        },
+        {
+          "Rok": 1992,
+          "MistrzSwiata": "Ted van der Parre",
+          "Wicemistrz": "Magnús Ver Magnússon",
+          "TrzecieMiejsce": "Jamie Reeves"
+        },
+        {
+          "Rok": 1993,
+          "MistrzSwiata": "Gary Taylor",
+          "Wicemistrz": "Magnús Ver Magnússon",
+          "TrzecieMiejsce": "Riku Kiri"
+        },
+        {
+          "Rok": 1994,
+          "MistrzSwiata": "Magnús Ver Magnússon",
+          "Wicemistrz": "Manfred Hoeberl",
+          "TrzecieMiejsce": "Riku Kiri"
+        },
+        {
+          "Rok": 1995,
+          "MistrzSwiata": "Magnús Ver Magnússon",
+          "Wicemistrz": "Gerrit Badenhorst",
+          "TrzecieMiejsce": "Marko Varalahti"
+        },
+        {
+          "Rok": 1996,
+          "MistrzSwiata": "Magnús Ver Magnússon",
+          "Wicemistrz": "Riku Kiri",
+          "TrzecieMiejsce": "Gerrit Badenhorst"
+        },
+        {
+          "Rok": 1997,
+          "MistrzSwiata": "Jouko Ahola",
+          "Wicemistrz": "Flemming Rasmussen",
+          "TrzecieMiejsce": "Magnus Samuelsson"
+        },
+        {
+          "Rok": 1998,
+          "MistrzSwiata": "Magnus Samuelsson",
+          "Wicemistrz": "Jouko Ahola",
+          "TrzecieMiejsce": "Wout Zijlstra"
+        },
+        {
+          "Rok": 1999,
+          "MistrzSwiata": "Jouko Ahola",
+          "Wicemistrz": "Janne Virtanen",
+          "TrzecieMiejsce": "Svend Karlsen"
+        },
+        {
+          "Rok": 2000,
+          "MistrzSwiata": "Janne Virtanen",
+          "Wicemistrz": "Svend Karlsen",
+          "TrzecieMiejsce": "Magnus Samuelsson"
+        },
+        {
+          "Rok": 2001,
+          "MistrzSwiata": "Svend Karlsen",
+          "Wicemistrz": "Magnus Samuelsson",
+          "TrzecieMiejsce": "Janne Virtanen"
+        },
+        {
+          "Rok": 2002,
+          "MistrzSwiata": "Mariusz Pudzianowski",
+          "Wicemistrz": "Žydrūnas Savickas",
+          "TrzecieMiejsce": "Raimonds Bergmanis"
+        },
+        {
+          "Rok": 2003,
+          "MistrzSwiata": "Mariusz Pudzianowski",
+          "Wicemistrz": "Žydrūnas Savickas",
+          "TrzecieMiejsce": "Wasyl Wirastiuk"
+        },
+        {
+          "Rok": 2004,
+          "MistrzSwiata": "Wasyl Wirastiuk",
+          "Wicemistrz": "Žydrūnas Savickas",
+          "TrzecieMiejsce": "Mariusz Pudzianowski"
+        },
+        {
+          "Rok": 2005,
+          "MistrzSwiata": "Mariusz Pudzianowski",
+          "Wicemistrz": "Jesse Marunde",
+          "TrzecieMiejsce": "Dominic Filiou"
+        },
+        {
+          "Rok": 2006,
+          "MistrzSwiata": "Phil Pfister",
+          "Wicemistrz": "Mariusz Pudzianowski",
+          "TrzecieMiejsce": "Don Pope"
+        },
+        {
+          "Rok": 2007,
+          "MistrzSwiata": "Mariusz Pudzianowski",
+          "Wicemistrz": "Sebastian Wenta",
+          "TrzecieMiejsce": "Terry Hollands"
+        },
+        {
+          "Rok": 2008,
+          "MistrzSwiata": "Mariusz Pudzianowski",
+          "Wicemistrz": "Derek Poundstone",
+          "TrzecieMiejsce": "Dave Ostlund"
+        },
+        {
+          "Rok": 2009,
+          "MistrzSwiata": "Žydrūnas Savickas",
+          "Wicemistrz": "Mariusz Pudzianowski",
+          "TrzecieMiejsce": "Brian Shaw"
+        },
+        {
+          "Rok": 2010,
+          "MistrzSwiata": "Žydrūnas Savickas",
+          "Wicemistrz": "Brian Shaw",
+          "TrzecieMiejsce": "Michaił Koklajew"
+        },
+        {
+          "Rok": 2011,
+          "MistrzSwiata": "Brian Shaw",
+          "Wicemistrz": "Žydrūnas Savickas",
+          "TrzecieMiejsce": "Terry Hollands"
+        },
+        {
+          "Rok": 2012,
+          "MistrzSwiata": "Žydrūnas Savickas",
+          "Wicemistrz": "Vytautas Lalas",
+          "TrzecieMiejsce": "Hafþór Júlíus Björnsson"
+        },
+        {
+          "Rok": 2013,
+          "MistrzSwiata": "Brian Shaw",
+          "Wicemistrz": "Žydrūnas Savickas",
+          "TrzecieMiejsce": "Hafþór Júlíus Björnsson"
+        },
+        {
+          "Rok": 2014,
+          "MistrzSwiata": "Žydrūnas Savickas",
+          "Wicemistrz": "Hafþór Júlíus Björnsson",
+          "TrzecieMiejsce": "Brian Shaw"
+        },
+        {
+          "Rok": 2015,
+          "MistrzSwiata": "Brian Shaw",
+          "Wicemistrz": "Žydrūnas Savickas",
+          "TrzecieMiejsce": "Hafþór Júlíus Björnsson"
+        },
+        {
+          "Rok": 2016,
+          "MistrzSwiata": "Brian Shaw",
+          "Wicemistrz": "Hafþór Júlíus Björnsson",
+          "TrzecieMiejsce": "Eddie Hall"
+        },
+        {
+          "Rok": 2017,
+          "MistrzSwiata": "Eddie Hall",
+          "Wicemistrz": "Hafþór Júlíus Björnsson",
+          "TrzecieMiejsce": "Brian Shaw"
+        },
+        {
+          "Rok": 2018,
+          "MistrzSwiata": "Hafþór Júlíus Björnsson",
+          "Wicemistrz": "Mateusz Kieliszkowski",
+          "TrzecieMiejsce": "Brian Shaw"
+        },
+        {
+          "Rok": 2019,
+          "MistrzSwiata": "Martins Licis",
+          "Wicemistrz": "Mateusz Kieliszkowski",
+          "TrzecieMiejsce": "Hafþór Júlíus Björnsson"
+        }
+      ];
+    }]);
+
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
